@@ -103,7 +103,7 @@ class FaceSwapScript(scripts.Script):
         return scripts.AlwaysVisible  # type: ignore
 
     def ui(self, is_img2img: bool) -> List[gr.components.Component]:
-        with gr.Accordion(f"FaceSwapLab {VERSION_FLAG}", open=False):
+        with gr.Accordion(f"FaceSwapLab {VERSION_FLAG}", open=False, elem_id="faceswaplab"):
             components: List[gr.components.Component] = []
             for i in range(1, self.units_count + 1):
                 components += faceswaplab_unit_ui.faceswap_unit_ui(is_img2img, i)

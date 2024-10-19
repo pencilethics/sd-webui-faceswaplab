@@ -9,7 +9,7 @@ from scripts.faceswaplab_utils.sd_utils import get_sd_option
 def faceswap_unit_advanced_options(
     is_img2img: bool, unit_num: int = 1, id_prefix: str = "faceswaplab_"
 ) -> List[gr.components.Component]:
-    with gr.Accordion(f"Post-Processing & Advanced Mask Options", open=False):
+    with gr.Accordion(f"Post-Processing & Advanced Mask Options", elem_id=f"{id_prefix}_face{unit_num}_advanced_options", open=False):
         gr.Markdown(
             """Post-processing and mask settings for unit faces. Best result : checks all, use LDSR, use Codeformer"""
         )
@@ -218,7 +218,7 @@ Otherwise, read the [doc](https://glucauze.github.io/sd-webui-faceswaplab/doc/) 
 """
         )
 
-        with gr.Accordion("Similarity", open=False):
+        with gr.Accordion("Similarity", elem_id=f"{id_prefix}_face{unit_num}_similarity", open=False):
             gr.Markdown("""Discard images with low similarity or no faces :""")
             with gr.Row():
                 check_similarity = gr.Checkbox(
@@ -249,7 +249,7 @@ Otherwise, read the [doc](https://glucauze.github.io/sd-webui-faceswaplab/doc/) 
                 elem_id=f"{id_prefix}_face{unit_num}_min_ref_similarity",
             )
 
-        with gr.Accordion(label="Pre-Inpainting (before swapping)", open=False):
+        with gr.Accordion(label="Pre-Inpainting (before swapping)", elem_id=f"{id_prefix}_face{unit_num}_preinpainting", open=False):
             gr.Markdown("Pre-inpainting sends face to inpainting before swapping")
             pre_inpainting = face_inpainting_ui(
                 id_prefix=f"{id_prefix}_face{unit_num}_preinpainting",
@@ -257,7 +257,7 @@ Otherwise, read the [doc](https://glucauze.github.io/sd-webui-faceswaplab/doc/) 
 
         options = faceswap_unit_advanced_options(is_img2img, unit_num, id_prefix)
 
-        with gr.Accordion(label="Post-Inpainting (After swapping)", open=False):
+        with gr.Accordion(label="Post-Inpainting (After swapping)", elem_id=f"{id_prefix}_face{unit_num}_postinpainting", open=False):
             gr.Markdown("Pre-inpainting sends face to inpainting before swapping")
             post_inpainting = face_inpainting_ui(
                 id_prefix=f"{id_prefix}_face{unit_num}_postinpainting",
