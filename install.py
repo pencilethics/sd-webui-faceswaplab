@@ -35,7 +35,7 @@ def check_install() -> None:
             required_version = parse(package.split(">=")[1])
             return installed_version >= required_version
         else:
-            if package_name == "opencv-python":
+            if package_name == "opencv-contrib-python-headless":
                 return launch.is_installed(package_name) or launch.is_installed("cv2")
             return launch.is_installed(package_name)
 
